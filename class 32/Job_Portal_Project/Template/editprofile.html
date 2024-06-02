@@ -1,0 +1,238 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration Form</title>
+<style>
+    /* Basic CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Profile</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="age">Age:</label>
+        <input type="number" min="18" max="122" id="age" name="age" >
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="blood">Blood Type:</label>
+        <select id="blood" name="blood" required>
+            <option value="">Select</option>
+            <option value="a">A</option>
+            
+            <option value="b">B</option>
+
+            <option value="ab">AB</option>
+            
+            <option value="o">O</option>
+        
+        </select>
+
+        <label for="user_type">User Type:</label>
+        <select id="user_type" name="usertype" >
+            <option value="">Select</option>
+            <option value="jobrecruiter">job_recruiter</option>
+            <option value="jobseeker">jobseeker</option>
+            <option value="viewer">viewer</option>
+        </select>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" >
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" >
+
+
+        <label for="profile_photo">Profile Photo:</label>
+        <input type="file" id="profile_photo" name="profile_photo" >
+
+
+<!-- recruiterprofile -->
+
+{% if user.RecruiterProfile %}
+    
+
+
+<label for="username">company_name:</label>
+<input type="text" id="username" name="company_name" >
+
+
+<label for="username">company_location:</label>
+<input type="text" id="username" name="company_location">
+
+
+<label for="username">recruiter_name:</label>
+<input type="text" id="username" name="recruiter_name">
+
+<!-- end recruiter profile -->
+
+{% elif user.SeekerProfile %}
+<!-- seeker profile -->
+
+
+<label for="username">qualification:</label>
+<input type="text" id="username" name="qualification" >
+
+
+<label for="username">experience:</label>
+<input type="text" id="username" name="experience" >
+
+
+<label for="username">skills:</label>
+<input type="text" id="username" name="skills" >
+
+
+<!-- Educational Qualification -->
+
+<label for="username">degree:</label>
+<input type="text" id="username" name="degree" >
+
+
+<label for="username">institution:</label>
+<input type="text" id="username" name="institution" >
+
+
+<label for="username">year:</label>
+<input type="text" id="username" name="year" >
+
+
+
+<!-- End Educational_Qualification -->
+
+
+
+
+<!-- Work Experience -->
+
+<label for="username">Company Name:</label>
+<input type="text" id="username" name="company_name" >
+
+
+<label for="username">position:</label>
+<input type="text" id="username" name="position" >
+
+
+<label for="username">start:</label>
+<input type="text" id="username" name="start" >
+
+
+<label for="username">end:</label>
+<input type="text" id="username" name="end" >
+
+<!-- End Work Experience -->
+
+
+<!-- end seeker -->
+
+{% endif %}
+
+
+
+
+<!-- basicinformation -->
+
+<label for="username">fathername:</label>
+<input type="text" id="username" name="fathername" >
+
+
+<label for="username">mothername:</label>
+<input type="text" id="username" name="mothername" >
+
+
+<label for="username">address:</label>
+<input type="text" id="username" name="address" >
+
+<!-- End Basic Information -->
+
+<!-- contact -->
+
+
+<label for="username">phone:</label>
+<input type="text" id="username" name="phone" >
+
+
+<label for="username">emergnecy_contact:</label>
+<input type="text" id="username" name="emergnecy_contact" >
+
+<!-- end contact -->
+
+
+
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    
+    
+        <input type="submit" value="Save Changes">
+        
+    </form>
+</div>
+
+</body>
+</html>
+
+    
+{% endblock content %}
+    

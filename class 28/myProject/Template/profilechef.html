@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    {% for i in profile %}
+        
+
+        
+
+<div class="profile">
+  <div class="header">
+    <h1>User Profile</h1>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="label">Username:</div>
+      <div class="value">{{user.username}}</div>
+    </div>
+    <div class="row">
+      <div class="label">Email:</div>
+      <div class="value">{{user.email}}</div>
+    </div>
+    <div class="row">
+      <div class="label">Gender:</div>
+      <div class="value"> {{i.gender}} </div>
+    </div>
+    <div class="row">
+      <div class="label">User Type:</div>
+      <div class="value">{{user.usertype}}</div>
+    </div>
+    <div class="row">
+      <div class="label">Age:</div>
+      <div class="value"> {{user.Age}} </div>
+    </div>
+    <div class="row">
+      <div class="label">City:</div>
+      <div class="value">{{user.City}}</div>
+    </div>
+    <div class="row">
+      <div class="label">Country:</div>
+      <div class="value">{{user.Country}}</div>
+
+      
+      {% if user.usertype == 'chef' %}
+      <div class="label">experience:</div>
+      <div class="value">{{i.experience}}</div>
+
+      <div class="label">skills:</div>
+      <div class="value">{{i.skills}}</div>
+
+      <div class="label">resumelatter:</div>
+      <div class="value">{{i.resumelatter}}</div>      
+      <div class="label">profilepicture:</div>
+      <div class="value"><img src="/{{i.profilepicture}}" alt=""></div>      
+
+        
+      {% endif %}
+        
+
+    </div>
+  </div>
+</div>
+{% endfor %}
+</body>
+</html>
+
+    
+{% endblock content %}
+
+    

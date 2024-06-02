@@ -1,0 +1,22 @@
+
+
+{% extends 'index.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> {% include 'message.html' %} </h2>
+<h1>   Welcome {{user.username}}</h1> 
+<h3>usertype: {{user.usertype}}</h3>    
+</body>
+</html>
+
+{% endblock content %}
+    

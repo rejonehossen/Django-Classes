@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+    /* Basic CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .card {
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .info-label {
+        font-weight: bold;
+    }
+    .info-value {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <img src="/{{user.profile_photo}}" alt="Profile Photo">
+    <div class="info-label">Age:</div>
+    <div class="info-value">{{user.age}}</div>
+    <div class="info-label">Gender:</div>
+    <div class="info-value">{{user.gender}}</div>
+    <div class="info-label">Blood Type:</div>
+    <div class="info-value">{{user.blood}}</div>
+    <div class="info-label">User Type:</div>
+    <div class="info-value">{{user.usertype}}</div>
+    <div class="info-label">First Name:</div>
+    <div class="info-value">{{user.first_name}}</div>
+    <div class="info-label">Last Name:</div>
+    <div class="info-value">{{user.last_name}}</div>
+    <div class="info-label">City:</div>
+    <div class="info-value">{{user.city}}</div>
+    <div class="info-label">Country:</div>
+    <div class="info-value">{{user.country}}</div>
+    <div class="info-label">Username:</div>
+    <div class="info-value">{{user.username}}</div>
+</div>
+
+
+
+
+
+    
+
+    
+{% if user.RecruiterProfile %}
+    <div class="info-label">company_name:</div>
+    <div class="info-value">{{ user.RecruiterProfile.company_name }}</div>
+    <div class="info-label">company_location:</div>
+    <div class="info-value">{{ user.RecruiterProfile.company_location }}</div>
+    <div class="info-label">recruiter_name:</div>
+    <div class="info-value">{{ user.RecruiterProfile.recruiter_name }}</div>
+{% elif user.SeekerProfile %}
+    <div class="info-label">qualification:</div>
+    <div class="info-value">{{ user.SeekerProfile.qualification }}</div>
+    <div class="info-label">experience:</div>
+    <div class="info-value">{{ user.SeekerProfile.experience }}</div>
+    <div class="info-label">skills:</div>
+    <div class="info-value">{{ user.SeekerProfile.skills }}</div>
+{% endif %}
+
+    
+
+    
+
+
+
+</body>
+</html>
+
+    
+{% endblock content %}
+    

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Personal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/profile/assets/img/favicon.png" rel="icon">
+  <link href="/static/profile/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/profile/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/profile/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/profile/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/profile/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/profile/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/profile/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Personal
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body style="background-image: url('/{{user.BasicInformation.profile_picture}}');">
+  
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+      {% include 'message.html' %}
+
+
+      <h1><a href="index.html">{{user.BasicInformation.full_name}}</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="/static/profile/assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <h2>I'm a {% if user.usertype == 'chef' %} passionate <span>{{user.usertype}}</span> {% endif %} from {{user.country}}</h2>
+
+      <nav id="navbar" class="navbar" >
+        <ul>
+          <li><a class="nav-link active" href="{% url 'hero' %}">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="nav-link" href="{% url 'editprofile' %}">Edit Profile</a></li>
+          <li><a class="nav-link" href="{% url 'changepassword' %}">Change Password</a></li>
+          <li><a class="nav-link" href="{% url 'signout' %}">Log Out</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      
+
+    </div>
+  </header><!-- End Header -->
+  {% block profile %}
+
+  {% endblock profile %}
+
+
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+
+    <!-- ======= About Me ======= -->
+    <div class="about-me container">
+
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Learn more about me</p>
+      </div>
+
+      <!-- <img id="myimg" src="/{{user.BasicInformation.profile_picture}}"> -->
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-right">
+          <img src="/{{user.BasicInformation.profile_picture}}" width="600" height="680" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>UI/UX &amp; {{user.usertype}}</h3>
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{user.BasicInformation.phone}}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{usre.city}}</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{user.age}}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>{{user.email}}</span></li>
+                
+                {% if user.usertype == 'chef' %}
+                <li><i class="bi bi-chevron-right"></i> <strong>Certification:</strong> <span>{{user.ChefProfile.certification}}</span></li>
+              <h2> Work Experience </h2>
+
+              <li><i class="bi bi-chevron-right"></i> <strong>Company:</strong> <span>{{user.ChefProfile.company}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Position:</strong> <span>{{user.ChefProfile.position}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Start:</strong> <span>{{user.ChefProfile.start}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>End:</strong> <span>{{user.ChefProfile.end}}</span></li>
+
+              <h2>Skills</h2>
+
+              <li><i class="bi bi-chevron-right"></i> <strong>Hard Skills:</strong> <span>{{user.ChefProfile.hard_skill}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Soft Skills:</strong> <span>{{user.ChefProfile.soft_skill}}</span></li>
+
+
+              {% elif user.usertype == 'viewer' %}
+              <li><i class="bi bi-chevron-right"></i> <strong>Interested Food:</strong> <span>{{user.ViewerProfile.interested_food}}</span></li>
+                {% endif %}
+              
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div><!-- End About Me -->
+
+    
+
+    
+
+
+ 
+
+  </section><!-- End About Section -->
+
+ 
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Contact Me</p>
+      </div>
+
+      <div class="row mt-2">
+
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-map"></i>
+            <h3>My Address</h3>
+            <p>{{user.BasicInformation.address}}</p>
+          </div>
+        </div>
+
+       
+
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Me</h3>
+            <p>{{user.email}}</p>
+          </div>
+        </div>
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Me</h3>
+            <p>{{user.BasicInformation.phone}}</p>
+          </div>
+        </div>
+      </div>
+
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+      </form>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
+    Designed by <a href="https://www.facebook.com/rejone10">Rejone Hossen</a>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/profile/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/static/profile/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/profile/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/profile/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/profile/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/profile/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/static/profile/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/profile/assets/js/main.js"></script>
+
+</body>
+
+</html>

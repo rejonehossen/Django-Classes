@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2> Recipe List</h2>
+
+<table>
+  <tr>
+    <th>RecipeTitle</th>
+    <th>TotalTime</th>
+    <th>SampleRecipeImage</th>
+    <th>Actions</th>
+  </tr>
+  
+  {% for i in mod %}
+    
+ 
+  <tr>
+    <td> {{i.RecipeTitle}} </td>
+    <td> {{i.TotalTime}} </td>
+    <td><img src="/{{i.SampleRecipeImage}}" width="80px" height="100px" alt=""></td>
+ 
+    <td>
+        
+        <a href="{% url 'viewrecipe' i.id %}">View</a>
+    </td>
+</tr>
+  {% endfor %}
+    
+</table>
+</body>
+</html>
+    
+{% endblock content %}
+
+
+
+    

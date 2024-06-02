@@ -1,0 +1,9 @@
+{% if messages %}
+    {% for i in message %}
+        {% if i.tags == success %}
+            <h1> {i} </h1>
+        {% elif i.tags == warning %}
+            <h1> {i} </h1>
+        {% endif %}
+    {% endfor %}
+{% endif %}

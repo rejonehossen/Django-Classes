@@ -1,0 +1,61 @@
+{% extends 'profile.html' %}
+{% block profilee %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information Card</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    
+    <div>
+        <div class="info-label">Age:</div>
+        <div class="info-value">{{user.age}}</div>
+        <div class="info-label">Gender:</div>
+        <div class="info-value">{{user.gender}}</div>
+        <div class="info-label">Blood Type:</div>
+        <div class="info-value">{{user.blood}}</div>
+        <div class="info-label">User Type:</div>
+        <div class="info-value">{{user.usertype}}</div>
+        <div class="info-label">First Name:</div>
+        <div class="info-value">{{user.first_name}}</div>
+        <div class="info-label">Last Name:</div>
+        <div class="info-value">{{user.last_name}}</div>
+        <div class="info-label">City:</div>
+        <div class="info-value">{{user.city}}</div>
+        <div class="info-label">Country:</div>
+        <div class="info-value">{{user.country}}</div>
+    {% if user.RecruiterProfile %}
+        <div class="info-label">company_name:</div>
+        <div class="info-value">{{ user.RecruiterProfile.company_name }}</div>
+        <div class="info-label">company_location:</div>
+        <div class="info-value">{{ user.RecruiterProfile.company_location }}</div>
+        <div class="info-label">recruiter_name:</div>
+        <div class="info-value">{{ user.RecruiterProfile.recruiter_name }}</div>
+    {% elif user.SeekerProfile %}
+        <div class="info-label">qualification:</div>
+        <div class="info-value">{{ user.SeekerProfile.qualification }}</div>
+        <div class="info-label">experience:</div>
+        <div class="info-value">{{ user.SeekerProfile.experience }}</div>
+        <div class="info-label">skills:</div>
+        <div class="info-value">{{ user.SeekerProfile.skills }}</div>
+    {% endif %}
+
+<div class="card">
+    <h2>Basic Information</h2>
+    <p><strong>Father's Name:</strong> </p>
+    <p><strong>Mother's Name:</strong> </p>
+    <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock profilee %}
+    

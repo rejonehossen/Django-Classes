@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<h1>View Job</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Information</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Job Information</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Job Name</th>
+            <th>Company Name</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    
+
+        
+
+    {% for i in mod %}
+
+    
+    <!-- {% if user.username == i.rename %} -->
+    <tr>
+        <td> {{i.jobtitle}} </td>
+        <td> {{i.companyname}} </td>
+        <td> {{i.salaryinformation}} </td>
+        <td>
+            <a href="{% url 'detailsjob' i.id %}">Details</a>
+            <a href="{% url 'deletejob' i.id %}">Delete</a>
+            <a href="{% url 'editjob' i.id %}">Edit</a>
+        </td>
+    </tr>
+
+    <!-- {% endif %} -->
+        
+    {% endfor %}
+    
+    
+</table>
+
+</body>
+</html>
+
+
+    
+{% endblock content %}
+
+
+
+
+    

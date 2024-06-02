@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .container {
+            padding: 2px 16px;
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+        .card-text {
+            font-size: 16px;
+            color: #555;
+        }
+        .image-container {
+            max-width: 100%;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .recipe-image {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        {% include 'message.html' %}
+
+        <div class="image-container">
+            <img src="/{{recipe.sample_recipe_image}}" alt="Recipe Image" class="recipe-image">
+        </div>
+        <div class="container">
+            <h2 class="card-title">Recipe Title</h2>
+            <p class="card-text"><strong>Ingredients:</strong> {{recipe.ingredients}}.</p>
+            <p class="card-text"><strong>Instructions:</strong> {{recipe.ingredients}}</p>
+            <p class="card-text"><strong>Preparation Time:</strong> {{recipe.preparation_time}} </p>
+            <p class="card-text"><strong>Cooking Time:</strong> {{recipe.cooking_time}}</p>
+            <p class="card-text"><strong>Total Time:</strong> {{recipe.total_time}}</p>
+            <p class="card-text"><strong>Difficulty Level:</strong> {{recipe.difficulty_level}}</p>
+            <p class="card-text"><strong>Nutritional Information:</strong> {{recipe.nutritional_information}} </p>
+            <p class="card-text"><strong>Recipe Category:</strong> {{recipe.recipe_category}}</p>
+            <p class="card-text"><strong>Tags:</strong>{{recipe.tags}}</p>
+            <p class="card-text"><strong>Total Calories:</strong> {{recipe.total_calory}}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+{% endblock content %}

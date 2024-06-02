@@ -1,0 +1,65 @@
+
+  {% extends 'index.html' %}
+
+  {% block content %}
+
+
+  <!DOCTYPE html>
+<html>
+<head>
+
+  <title>
+    {% block title %}
+      Table
+    {% endblock title %}
+  </title>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>Film</th>
+    <th>Actior</th>
+    <th>Director</th>
+  </tr>
+
+ {% for i in std %}
+ <tr> 
+    <td> {{i.Film}} </td>
+    <td> {{i.Actor}} </td>
+    <td> {{i.Director}} </td>
+ </tr>
+ {% endfor %}
+
+  </table>
+  </body>
+  </html>
+
+
+  {% endblock content %}

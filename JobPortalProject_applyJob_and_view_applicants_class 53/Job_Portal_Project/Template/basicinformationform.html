@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information Form</title>
+</head>
+<body>
+
+<h2>Basic Information</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="father_name">Father's Name:</label><br>
+    <input type="text" id="father_name" name="fathername" required><br>
+    
+    <label for="mother_name">Mother's Name:</label><br>
+    <input type="text" id="mother_name" name="mothername" required><br>
+    
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+    
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

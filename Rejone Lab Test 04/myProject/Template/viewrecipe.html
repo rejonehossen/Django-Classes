@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Recipe Details</h1>
+    
+    {% for i in mod %}
+        
+
+    <p> SampleRecipeImage: <img src="/{{i.SampleRecipeImage}}" alt=""></p>
+    <p> RecipeTitle: {{i.RecipeTitle}} </p>
+    <p> Ingredients: {{i.Ingredients}} </p>
+    <p> PreparationTime:{{i.PreparationTime}} </p>
+    <p>CookingTime :{{i.CookingTime}} </p>
+    <p>TotalTime :{{i.TotalTime}} </p>
+    <p> NutritionlaInformation:{{i.NutritionlaInformation}} </p>
+    <p> RecipeCategory:{{i.RecipeCategory}} </p>
+    <p> DifficultyLevel:{{i.DifficultyLevel}} </p>
+    <p> Tags:{{i.Tags}} </p>
+    <p> TotalCalorie:{{i.TotalCalorie}} </p>
+    <p> Instructions:{{i.Instructions}} </p>
+    
+    {% endfor %}
+</body>
+</html>

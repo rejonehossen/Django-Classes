@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job View Card</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    
+    .card {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        float: left;
+    }
+    
+    .card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .card p {
+        margin: 5px 0;
+        color: #666;
+    }
+    
+    .card .highlight {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    
+    .card .description {
+        margin-top: 15px;
+    }
+</style>
+</head>
+<body>
+{% for i in mod %}
+<div class="card">
+    <h3>{{i.jobtitle}}</h3>
+    <p><span class="highlight">Company:</span> {{i.companyname}}</p>
+    <p><span class="highlight">Address:</span> {{i.address}}</p>
+    <p class="description"><span class="highlight">Company Description:</span> {{i.companydescription}}</p>
+    <p class="description"><span class="highlight">Job Description:</span> {{i.jobdescription}}</p>
+    <p><span class="highlight">Qualifications:</span> {{i.qualifications}}</p>
+    <p><span class="highlight">Salary:</span> {{i.salaryinformation}}</p>
+    <p><span class="highlight">Deadline:</span> {{i.deadline}}</p>
+    <p><span class="highlight">Resignation:</span> {{i.resignation}}</p>
+    <p><span class="highlight">Experience:</span> {{i.experience}}</p>
+</div>
+{% endfor %}
+</body>
+</html>
+{{i.}}
+    
+{% endblock content %}
+    

@@ -1,0 +1,72 @@
+
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Information Card</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    
+    .card {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        float: left;
+    }
+    
+    .card h3 {
+        margin-top: 0;
+    }
+    
+    .card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .card p {
+        margin: 5px 0;
+    }
+</style>
+</head>
+<body>
+    
+    
+        
+
+        
+
+<div class="card">
+    <h3>User Information</h3>
+    <img src="/{{user.Image}}" alt="User Image">
+    <p><strong>User Name:</strong> {{user.username}}</p>
+    <p><strong>Display Name:</strong> {{user.display_name}}</p>
+    <p><strong>First Name:</strong> {{user.first_name}}</p>
+    <p><strong>Last Name:</strong> {{user.last_name}}</p>
+    <p><strong>Address:</strong> {{user.address}}</p>
+    <p><strong>Date of Birth:</strong> {{user.date_of_birth}}</p>
+    <p><strong>Blood Group:</strong> {{user.blood_group}}</p>
+    <p><strong>Gender:</strong> {{user.gender}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>User Type:</strong> {{user.usertype}}</p>
+</div>
+
+</body>
+</html>
+
+{% endblock content %}
+    

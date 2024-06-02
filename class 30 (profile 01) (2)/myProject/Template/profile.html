@@ -1,0 +1,115 @@
+
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Information Card</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    
+    .card {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        float: left;
+    }
+    
+    .card h3 {
+        margin-top: 0;
+    }
+    
+    .card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .card p {
+        margin: 5px 0;
+    }
+    .button {
+        background-color: #04AA6D; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      
+      .button2 {background-color: #008CBA;} /* Blue */
+      .button3 {background-color: #f44336;} /* Red */ 
+      .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+      .button5 {background-color: #555555;} /* Black */
+</style>
+</head>
+<body align="center">
+    
+    
+        
+
+        
+
+<div  class="card">
+    <h3>{{user.display_name}}</h3>
+    <img src="/{{user.Image}}" alt="User Image">
+    <br><br>
+
+    <button class="button"><a href="{% url 'editprofile' user.id %}">Edit Profile</a></button>
+    {% if user.usertype == 'requiter' %}
+
+    <button class="button button2"><a href="{% url 'viewjob' %}">Posted Job</a></button>
+    {% elif user.usertype == 'jobseeker' %}
+
+
+    <button class="button button3"><a href="">Applied Job</a></button>
+
+    {% endif %}
+
+    <p><strong>User Name:</strong> {{user.username}}</p>
+    
+    <p><strong>First Name:</strong> {{user.first_name}}</p>
+    <p><strong>Last Name:</strong> {{user.last_name}}</p>
+    <p><strong>Address:</strong> {{user.address}}</p>
+    <p><strong>Date of Birth:</strong> {{user.date_of_birth}}</p>
+    <p><strong>Blood Group:</strong> {{user.blood_group}}</p>
+    <p><strong>Gender:</strong> {{user.gender}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>User Type:</strong> {{user.usertype}}</p>
+    
+
+
+    {% if user.RecruiterProfile %}
+
+    <p><strong>company_name:</strong> {{profile.company_name}}</p>
+    <p><strong>company_description:</strong> {{profile.company_description}}</p>
+
+    
+    {% elif user.SeekerProfile %}
+    <p><strong>experience:</strong> {{profile.experience}}</p>
+    <p><strong>skills:</strong> {{profile.skills}}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+{% endblock content %}
+    

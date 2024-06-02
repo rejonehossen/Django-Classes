@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+        .cart-item img {
+            width: 100px;
+            margin-right: 20px;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-title {
+            font-size: 18px;
+            margin: 0;
+        }
+        .cart-item-price {
+            font-size: 16px;
+            color: #888;
+        }
+        .cart-item-remove {
+            color: #f00;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .cart-item-remove:hover {
+            color: #c00;
+        }
+        .total {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .total p {
+            margin: 0;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Recipe List</h1>
+        {% for i in recipe %}
+        <div class="cart-item">
+            <img src="/{{i.sample_recipe_image}}" width="20%" alt="Product 1">
+            <div class="cart-item-details">
+                <h2 class="cart-item-title">{{i.recipe_title}}</h2>
+                <p class="cart-item-price">Level: {{i.difficulty_level}} </p>
+                
+                {% if user.usertype == 'chef' %}
+                <button type="button" class="btn btn-info">
+                    <a style="color: rgb(210, 222, 222);" href="{% url 'editrecipe' i.id %}">Edit</a
+                        ></button>
+                <button type="button" class="btn btn-info">
+                    <a style="color: rgb(210, 222, 222);" href="{% url 'deleterecipe' i.id %}">Delete</a
+                        ></button>
+                {% endif %}
+
+
+                <button type="button" class="btn btn-info">
+                    <a style="color: rgb(210, 222, 222);" href="{% url 'detailsrecipe' i.id %}">Details</a
+                        ></button>
+            
+        {% include 'message.html' %}
+            
+                    </div>
+        </div>
+        {% endfor %}
+        
+        
+    </div>
+</body>
+</html>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience Form</title>
+</head>
+<body>
+
+<h2>Work Experience</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="company_name">Company Name:</label><br>
+    <input type="text" id="company_name" name="company_name" required><br>
+    
+    <label for="position">Position:</label><br>
+    <input type="text" id="position" name="position" required><br>
+    
+    <label for="start_date">Start Date:</label><br>
+    <input type="date" id="start_date" name="start" required><br>
+    
+    <label for="end_date">End Date:</label><br>
+    <input type="date" id="end_date" name="end"><br><br>
+    
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

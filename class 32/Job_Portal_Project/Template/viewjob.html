@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+
+
+
+
+{% block content %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Information Card</title>
+<style>
+    /* Basic CSS for layout */
+    .card {
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .card h3 {
+        margin-top: 0;
+    }
+    .info-label {
+        font-weight: bold;
+    }
+    .info-value {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+    
+    {% for i in mod %}
+        
+
+        
+
+<div class="card">
+    <img src="/{{i.company_logo}}" alt="Company Logo">
+    <h3>{{i.job_title}}</h3>
+    <div class="info-label">Description:</div>
+    <div class="info-value">{{i.job_description}}</div>
+    <div class="info-label">Location:</div>
+    <div class="info-value">{{i.job_location}}</div>
+    <div class="info-label">Deadline:</div>
+    <div class="info-value">{{i.deadline}}</div>
+    <div class="info-label">Requirements:</div>
+    <div class="info-value">{{i.requirements}}</div>
+    <div class="info-label">Qualifications:</div>
+    <div class="info-value">{{i.qualifications}}</div>
+    <div class="info-label">Job Type:</div>
+    <div class="info-value">{{i.job_types}}</div>
+    <div class="info-label">Workplace:</div>
+    <div class="info-value">{{i.workplace}}</div>
+    <div class="info-label">Salary:</div>
+    <div class="info-value">{{i.salary}}</div>
+    <div class="info-label">Experience:</div>
+    <div class="info-value">{{i.experience}}</div>
+</div>
+{% endfor %}
+</body>
+</html>
+
+{% endblock content %}
+    

@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Listings</title>
+<style>
+    /* Basic CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    td img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    .actions {
+        white-space: nowrap;
+    }
+    .actions a {
+        margin-right: 5px;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+
+<h2>Job Listings</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Salary</th>
+            <th>Company Logo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for i in mod %}
+            
+
+            
+        <tr>
+            <td> {{i.job_title}} </td>
+            <td> {{i.salary}} </td>
+            <td><img src="/{{i.company_logo}}" alt="Company Logo"></td>
+            <td >
+                <button>    <a href="{% url 'viewjob' i.id %}">View</a>
+                  </button>
+                
+                <button>    <a href="{% url 'editjob' i.id %}">Edit</a>
+                  </button>
+                
+            </td>
+            
+        </tr>
+        {% endfor %}
+    
+    </tbody>
+</table>
+
+</body>
+</html>
+
+
+
+
+{% endblock content %}
+    

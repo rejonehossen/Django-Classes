@@ -1,0 +1,22 @@
+
+<nav>
+    <ul>
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        
+        {% if user.usertype == 'jobrecruiter' %}
+        <li><a href="{% url 'addjobpage' %}">Add Job</a></li>
+
+            
+
+        
+        
+        <li><a href="{% url 'joblist' %}">List Jobs</a></li>
+        
+        {% elif user.usertype == 'jobseeker' %}
+        <li><a href="{% url 'joblist' %}">List Jobs</a></li>
+
+        {% endif %}
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'signout' %}">Logout</a></li>
+    </ul>
+</nav>

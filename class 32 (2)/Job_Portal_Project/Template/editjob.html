@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Job</title>
+<style>
+    /* Basic CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Job</h2>
+    <form action="{% url 'updatejob' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+{% for i in mod %}
+    
+
+
+        <label for="job_title">ID:</label>
+        <input type="hidden" value="{{i.id}}" id="job_title" name="id" >
+        <label for="job_title">Job Title:</label>
+        <input type="text" value="{{i.job_title}}" id="job_title" name="job_title" required>
+
+        <label for="job_description">Job Description:</label>
+        <textarea id="job_description"  name="job_description" rows="4" required>{{i.job_description}}</textarea>
+
+        <label for="job_location">Job Location:</label>
+        <input type="text"  value="{{i.job_location}}" id="job_location" name="job_location" required>
+
+        <label for="deadline">Deadline:</label>
+        <input type="date"  value="{{i.deadline}}" id="deadline" name="deadline" required>
+
+    <img src="/{{i.company_logo}}" width="40%" alt="company_logo">
+        <input type="hidden"  value="{{i.company_logo}}" id="company_logo" name="company_logo"  >
+        <input type="file"   id="company_logo" name="newimage"  >
+        <label for="requirements">Requirements:</label>
+        <textarea id="requirements" name="requirements" rows="4" required> {{i.requirements}}</textarea>
+
+        <label for="qualifications">Qualifications:</label>
+        <textarea id="qualifications" name="qualifications" rows="4" required>{{i.qualifications}}</textarea>
+
+        <label for="job_types">Job Types:</label>
+        <select id="job_types"  value="{{i.job_types}}" name="job_types" >
+            <option value="">Select</option>
+            <option value="fulltime">Full Time</option>
+            <option value="parttime">Part Time</option>
+            
+        </select>
+
+        <label for="workplace">Workplace:</label>
+        <select id="workplace"  value="{{i.workplace}}" name="workplace" >
+            <option value="">Select</option>
+            <option value="remote">Remote</option>
+            <option value="onsite">Onsite</option>
+        </select>
+
+        <label for="salary">Salary:</label>
+        <input type="text"  value="{{i.salary}}" id="salary" name="salary" required>
+
+        <label for="experience">Experience:</label>
+        <input type="text"  value="{{i.experience}}" id="experience" name="experience" required>
+
+        <input type="submit" value="Add Job">
+    </form>
+    {% endfor %}
+    
+</div>
+
+</body>
+</html>
+
+{% endblock content %}
+    

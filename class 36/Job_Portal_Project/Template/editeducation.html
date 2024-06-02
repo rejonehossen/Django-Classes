@@ -1,0 +1,41 @@
+{% extends 'profile.html' %}
+
+{% block profilee %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Qualification Form</title>
+</head>
+<body>
+
+<h2>Educational Qualification</h2>
+<form action="{% url 'updateeducation' %}" method="POST">
+    {% csrf_token %}
+    
+
+        
+
+        
+    <label for="degree">Degree:</label><br>
+    <input type="text" value="{{user.Educational_Qualification.degree}}" id="degree" name="degree" required><br>
+    
+    <label for="institution">Institution:</label><br>
+    <input type="text" value="{{user.Educational_Qualification.institution}}" id="institution" name="institution" required><br>
+    
+    <label for="year">Year:</label><br>
+    <input type="text" value="{{user.Educational_Qualification.year}}" id="year" name="year" required><br><br>
+    
+    <input type="submit" value="Submit">
+    
+</form>
+
+</body>
+</html>
+
+
+{% endblock profilee %}

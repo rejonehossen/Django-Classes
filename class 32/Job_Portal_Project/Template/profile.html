@@ -1,0 +1,110 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    {% block protitle %}
+        
+    {% endblock protitle %}
+        
+</title>
+<style>
+    /* Basic CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .card {
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .info-label {
+        font-weight: bold;
+    }
+    .info-value {
+        margin-bottom: 10px;
+    }
+    .button {
+        display: inline-block;
+        background-color: #007bff; /* Blue */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body align="center">
+
+<div align="center" class="card">
+    <div align="center" class="info-value">{{user.username}}</div>
+    <img src="/{{user.profile_photo}}" alt="Profile Photo">
+    
+    <button class="button">
+        <a href="{% url 'basicinformationdata' %}">Basic Information</a>
+    </button>
+    <button class="button"><a href="{% url 'contactdata' %}">Contact</a></button>
+    <button class="button"><a href="{% url 'editprofile' %}">Edit Profile</a></button>
+    {% if user.SeekerProfile %}
+    <button class="button"><a href="{% url 'edicationdata' %}">edicationdata</a></button>
+    <button class="button"><a href="{% url 'workdata' %}">Work Experience</a></button>
+    {% endif %}
+    <button class="button">
+        <a href="">Change Password</a>
+    </button>
+
+
+
+
+{% block profilee %}
+    
+{% endblock profilee %}
+    
+</div>
+</div>
+
+<button class="button"><a href="{% url 'signout' %}">Logout</a></button>
+
+
+
+
+    
+
+    
+
+
+    
+
+    
+
+
+
+</body>
+</html>
+
+    
+
+    
+{% endblock content %}

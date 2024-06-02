@@ -1,0 +1,45 @@
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html"><span>Com</span>pany</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="/static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="{% url 'hero' %}" class="active">Home</a></li>
+
+         
+
+          {% if user.usertype == 'chef' %}
+          <li><a href="{% url 'addrecipepage' %}">Add Recipe</a></li>
+          <li><a href="{% url 'recipelist' %}">List Recipe</a></li>
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'signout' %}">Logoout</a></li>
+
+
+          {% elif user.usertype == 'viewer' %}
+          <li><a href="">Ordered Food</a></li>
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'signout' %}">Logoout</a></li>
+
+
+
+
+          {% elif user.usertype == None %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'signin' %}">Sign In</a></li>
+
+
+          {% endif %}
+
+
+
+
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>

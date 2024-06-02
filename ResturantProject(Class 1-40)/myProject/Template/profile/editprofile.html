@@ -1,0 +1,301 @@
+{% extends 'profile/profile.html' %}
+{% block profile %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Sign Up</title>
+
+    <!-- Icons font CSS-->
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- /static/vendor CSS-->
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+        {% include 'message.html' %}
+
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Edit Your Profile Informations</h2>
+                    <form action="" method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Username</label>
+                                    <input class="input--style-4" value="{{user.username}}" type="text" name="username">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" value="{{user.first_name}}" type="text" name="first_name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" value="{{user.last_name}}" type="text" name="last_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                           
+                            
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" value="{{user.email}}" type="email" name="email">
+                                </div>
+                            </div>
+                            
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Age</label>
+                                    <input class="input--style-4" value="{{user.age}}" min="18" max="122" type="number" name="age">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">City</label>
+                                    <input class="input--style-4" value="{{user.city}}"  type="text" name="city">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Country</label>
+                                    <input class="input--style-4" value="{{user.country}}" type="text" name="country">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">User Type</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="usertype" disabled>
+                                        <option disabled="disabled" selected="selected">Choose option</option>
+                                        <option value="chef" {% if user.usertype == 'chef' %} selected {% endif %} >Chef</option>
+                                        <option value="viewer" {% if user.usertype == 'viewer' %} selected {% endif %} >Viewer</option>
+                                       
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label class="label">Gender</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="gender">
+                                        <option disabled="disabled" selected="selected">Choose option</option>
+                                        <option value="male" {% if user.gender == 'male' %} selected {% endif %} >Male</option>
+                                        <option value="female" {% if user.gender == 'female' %} selected {% endif %} >Female</option>
+                                        <option value="other" {% if usre.gender == 'other' %} selected {% endif %} >Other</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+
+                            <!-- Basic Informations -->
+                            <h2> Basic Informations </h2>
+
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">profile_picture</label>
+                                    <img src="/{{user.BasicInformation.profile_picture}}" width="40%" alt="">
+                                    <input class="input--style-4" value="{{user.BasicInformation.profile_picture}}" type="hidden" name="profile_picture">
+                                    <input class="input--style-4"  type="file" name="new_profile_picture">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">full_name</label>
+                                    <input class="input--style-4" value="{{user.BasicInformation.full_name}}" type="text" name="full_name">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">address</label>
+                                    <input class="input--style-4" value="{{user.BasicInformation.address}}" type="text" name="address">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" value="{{user.BasicInformation.phone}}" type="number" name="phone">
+                                </div>
+                            </div>
+
+                            <!-- End BasicInformation -->
+
+                            <!-- Chef Profile -->
+                            {% if user.ChefProfile %}
+
+
+                            <h2> Work Experience </h2>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">company</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.company}}" type="text" name="company">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">position</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.position}}" type="text" name="position">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">start</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.start}}" type="text" name="start">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">end</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.end}}" type="text" name="end">
+                                </div>
+                            </div>
+
+                            <h2> Skills </h2>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">hard_skill</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.hard_skill}}" type="text" name="hard_skill">
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">soft_skill</label>
+                                    <input class="input--style-4" value="{{user.ChefProfile.soft_skill}}" type="text" name="soft_skill">
+
+                                </div>
+                            </div>
+
+                            {% elif user.ViewerProfile %}
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">interested_food</label>
+                                    <input class="input--style-4" value="{{user.ViewerProfile.interested_food}}" type="text" name="interested_food">
+
+                                </div>
+                            </div>
+
+                            {% endif %}
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <input class="input--style-4" type="password" name="password">
+                            </div>
+                        </div>
+                
+                            
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Save Changes</button>
+
+                        </div>
+                        
+                            
+
+
+
+
+
+
+
+                        
+                            
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <!-- /static/vendor JS-->
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <script src="/static/vendor/datepicker/moment.min.js"></script>
+    <script src="/static/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+
+
+
+
+
+    
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
+
+
+{% endblock profile %}

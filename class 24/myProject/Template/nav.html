@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="{% url 'dashboard' %}">Home</a></li>
+
+  <li><a class="active" href="{% url 'viewjob' %}">View Job</a></li>
+  {% if user.usertype == 'jobseeker' %}
+
+  <li><a class="active" href="{% url 'recentjob'  %}">Applied Job</a></li>
+  <li><a class="active" href="{% url 'appliedjob'  %}">Recent Job</a></li>
+
+  {% elif user.usertype == 'requiter' %}
+    
+  <li><a class="active" href="{% url 'addjob' %}">Add Job</a></li>
+
+  {% endif %}
+  
+  <!-- <li><a class="active" href="{% url 'addjob' %}">Add Job</a></li> -->
+
+
+
+  <li><a class="active" href="{% url 'profile' %}">Profile</a></li>
+
+  <li><a href="{% url 'logout' %}">Log Out</a></li>
+</ul>
+
+</body>
+</html>
+
+
