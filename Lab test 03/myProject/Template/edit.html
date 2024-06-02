@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<h3>Using CSS to style an HTML Form</h3>
+
+<div>
+  <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
+    {% for i in mod %}
+    {% csrf_token %}
+
+    <label for="fname">ID</label>
+    <input type="text" value="{{i.id}}" id="fname" name="id" readonly placeholder="Your id..">
+
+
+    <label for="fname">Full Name</label>
+    <input type="text" value="{{i.FullName}}" id="fname" name="FullName" placeholder="Your Full Name..">
+
+    <label for="fname">Address</label>
+    <input type="text" value="{{i.Address}}" id="fname" name="Address" placeholder="Your Address..">
+
+    <label for="fname">Phone Number</label>
+    <input type="text" value="{{i.PhoneNumber}}" id="fname" name="PhoneNumber" placeholder="Your Phone Number..">
+
+    <label for="fname"> Email</label>
+    <input type="text" value="{{i.Email}}" id="fname" name="Email" placeholder="Your Email..">
+
+    {% if i.ProfilePicture %}
+    <img src="/{{i.ProfilePicture}}" width="80px" height="100px" alt="">
+    {% endif %}
+    <input type="file" value="{{i.ProfilePicture}}" id="fname" name="ProfilePicture">
+
+    <label for="fname">Career Object</label>
+    <input type="text" value="{{i.CareerObject}}" id="fname" name="CareerObject" placeholder="Your Career Object..">
+
+    <pre>
+
+
+<h2>Education History</h2>
+
+    </pre>
+    <label for="fname">Degreee</label>
+    <input type="text" value="{{i.Degree}}" id="fname" name="Degree" placeholder="Your Degree..">
+
+    <label for="fname">Instituiton</label>
+    <input type="text" value="{{i.Instituiton}}" id="fname" name="Instituiton" placeholder="Your Instituiton..">
+
+    <label for="fname">Graduation Year</label>
+    <input type="text" value="{{i.GraduationYear}}" id="fname" name="GraduationYear" placeholder="Your Graduation Year..">
+
+    <pre>
+
+        <h2>Work Experience</h2>
+
+    </pre>
+    <label for="fname">Company</label>
+    <input type="text" value="{{i.Company}}" id="fname" name="Company" placeholder="Your Company..">
+
+    <label for="fname">Position</label>
+    <input type="text" value="{{i.Position}}" id="fname" name="Position" placeholder="Your Position..">
+
+    <label for="fname">Start Date</label>
+    <input type="text" value="{{i.StartDate}}" id="fname" name="StartDate" placeholder="Your Start Date..">
+
+    <label for="fname">End Date</label>
+    <input type="text" value="{{i.EndDate}}" id="fname" name="EndDate" placeholder="Your End Date..">
+
+    <pre>
+
+        <h2>Skills</h2>
+
+    </pre>
+
+    <label for="fname">Hard Skills</label>
+    <input type="text" value="{{i.HardSkills}}" id="fname" name="HardSkills" placeholder="Your Hard Skills..">
+
+    <label for="fname">SoftS kills</label>
+    <input type="text" value="{{i.SoftSkills}}" id="fname" name="SoftSkills" placeholder="Your Soft Skills..">
+
+    <label for="fname">Certifications</label>
+    <input type="text" value="{{i.Certifications}}" id="fname" name="Certifications" placeholder="Your Certifications..">
+
+    <label for="fname">Projects</label>
+    <input type="text" value="{{i.Projects}}" id="fname" name="Projects" placeholder="Your Projects..">
+
+    <label for="fname">Reference</label>
+    <input type="text" value="{{i.Reference}}" id="fname" name="Reference" placeholder="Your Reference..">
+
+
+
+   
+    <input type="submit" value="Submit">
+    {% endfor %}
+  </form>
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock content %}

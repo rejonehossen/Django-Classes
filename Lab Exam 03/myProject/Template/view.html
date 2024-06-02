@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .profile-picture {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-header {
+            font-weight: bold;
+        }
+        .section-content {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% for i in mod %}
+    <div class="container">
+        <div class="profile">
+            <img class="profile-picture" src="/{{i.Picture}}" alt="Profile Picture">
+            <h1>Full Name: {{i.FullName}} </h1>
+            <p>Address: {{i.Address}} </p>
+            <p>Phone Number {{i.PhoneNumber}} </p>
+            <p>Email: {{i.Email}} </p>
+        </div>
+        <div class="career-objective section">
+            <h2 class="section-title">Career Objective</h2>
+            <p class="section-content">
+                {{i.CareerObject}}
+            </p>
+        </div>
+        <div class="education section">
+            <h2 class="section-title">Education</h2>
+            <div class="section-content">
+                <p class="section-header">Degree:</p>
+                <p>{{i.Degree}}</p>
+                <p class="section-header">Institution:</p>
+                <p>{{i.Institution}}</p>
+                <p class="section-header">Graduation Year:</p>
+                <p>{{i.GraduationYear}}</p>
+            </div>
+        </div>
+        <div class="work-experience section">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="section-content">
+                <p class="section-header">Company:</p>
+                <p>{{i.Company}}</p>
+                <p class="section-header">Position:</p>
+                <p>{{i.Position}}</p>
+                <p class="section-header">Start Date - End Date:</p>
+                <p>{{i.StartDate}} - {{i.EndDate}}</p>
+            </div>
+        </div>
+        <div class="skills section">
+            <h2 class="section-title">Skills</h2>
+            <div class="section-content">
+                <p class="section-header">Hard Skills:</p>
+                <p>{{i.HardSkills}}</p>
+                <p class="section-header">Soft Skills:</p>
+                <p>{{i.SoftSkills}}</p>
+            </div>
+        </div>
+        <div class="certifications section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="section-content">
+                <p>{{i.Certification}}</p>
+            </div>
+        </div>
+        <div class="projects section">
+            <h2 class="section-title">Projects</h2>
+            <div class="section-content">
+                <p>{{i.Projects}}</p>
+            </div>
+        </div>
+        <div class="references section">
+            <h2 class="section-title">References</h2>
+            <div class="section-content">
+                <p>{{i.References}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
+
+
+{% endblock content %}

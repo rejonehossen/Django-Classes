@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume</title>
+  <link rel="stylesheet" href="/Static/style.css">
+</head>
+<body>
+    {% for i in resume %}
+  <div class="resume">
+    <div class="header">
+      <h1>{{ i.FullName }}</h1>
+      <p>{{ i.Address }}</p>
+      <p>{{ i.PhoneNumber }}</p>
+      <p>{{ i.Email }}</p>
+    </div>
+    <div class="profile">
+      <img src="/{{ i.ProfilePicture }}" alt="Profile Picture">
+      <p>{{ i.CareerObject }}</p>
+    </div>
+    <div class="education">
+      <h2>Education</h2>
+      <p>{{ i.Degree }}</p>
+      <p>{{ i.Instituiton }}</p>
+      <p>{{ i.GraduationYear }}</p>
+    </div>
+    <div class="work-experience">
+      <h2>Work Experience</h2>
+      <p>{{ i.Company }}</p>
+      <p>{{ i.Position }}</p>
+      <p>{{ i.StartDate }} - {{ i.EndDate }}</p>
+    </div>
+    <div class="skills">
+      <h2>Skills</h2>
+      <p>{{ i.HardSkills }}</p>
+      <p>{{ i.SoftSkills }}</p>
+    </div>
+    <div class="certifications">
+      <h2>Certifications</h2>
+      <p>{{ i.Certifications }}</p>
+    </div>
+    <div class="projects">
+      <h2>Projects</h2>
+      <p>{{ i.Projects }}</p>
+    </div>
+    <div class="reference">
+      <h2>Reference</h2>
+      <p>{{ i.Reference }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</body>
+</html>
+
+{% endblock content %}
